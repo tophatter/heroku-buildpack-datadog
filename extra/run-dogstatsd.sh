@@ -8,7 +8,7 @@ else
 fi
 
 if [[ $HEROKU_APP_NAME ]]; then
-  sed -i -e "s/^.*hostname:.*$/hostname: ${HEROKU_APP_NAME}/" /app/.apt/opt/datadog-agent/agent/datadog.conf
+  sed -i -e "s/^.*hostname:.*$/hostname: ${HEROKU_APP_NAME}-${DYNO}/" /app/.apt/opt/datadog-agent/agent/datadog.conf
 else
   echo "HEROKU_APP_NAME environment variable not set. Run: heroku apps:info|grep ===|cut -d' ' -f2"
   exit 1
